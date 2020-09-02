@@ -2,6 +2,7 @@ package com.example.madlevel1task1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.madlevel1task1.databinding.ActivityHigherLowerBinding
 
 class HigherLowerActivity : AppCompatActivity() {
@@ -43,6 +44,15 @@ class HigherLowerActivity : AppCompatActivity() {
      */
     private fun updateUI() {
         binding.tvLastThrow.text = getString(R.string.last_throw, lastThrow)
+
+        when (lastThrow) {
+            1 -> binding.ivDice.setImageResource(R.drawable.dice1);
+            2 -> binding.ivDice.setImageResource(R.drawable.dice2);
+            3 -> binding.ivDice.setImageResource(R.drawable.dice3);
+            4 -> binding.ivDice.setImageResource(R.drawable.dice4);
+            5 -> binding.ivDice.setImageResource(R.drawable.dice5);
+            6 -> binding.ivDice.setImageResource(R.drawable.dice6);
+        }
     }
 
     /**
@@ -56,10 +66,16 @@ class HigherLowerActivity : AppCompatActivity() {
     }
 
     /**
-     * Calls [rollDice] and checks if the answer is correct.
+     * Calls [rollDice] and checks if the answer is lower than the previous dice roll.
      */
     private fun onLowerClick() {
-        //@TODO Implement this function yourself!
+        rollDice()
+
+        if (currentThrow < lastThrow) {
+            onAnswerCorrect()
+        } else {
+            onAnswerIncorrect()
+        }
     }
 
     /**
@@ -80,13 +96,13 @@ class HigherLowerActivity : AppCompatActivity() {
      * Displays a successful Toast message.
      */
     private fun onAnswerCorrect() {
-        //@TODO Implement this function yourself!
+        Toast.makeText(this, getString(R.string.correct), Toast.LENGTH_LONG).show()
     }
 
     /**
      * Displays an incorrect Toast message.
      */
     private fun onAnswerIncorrect() {
-        //@TODO Implement this function yourself!
+        Toast.makeText(this, getString(R.string.incorrect), Toast.LENGTH_LONG).show()
     }
 }
