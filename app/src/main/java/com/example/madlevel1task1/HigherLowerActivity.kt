@@ -45,6 +45,7 @@ class HigherLowerActivity : AppCompatActivity() {
     private fun updateUI() {
         binding.tvLastThrow.text = getString(R.string.last_throw, lastThrow)
 
+        // Display the correct dice image based on the lastThrow value
         when (lastThrow) {
             1 -> binding.ivDice.setImageResource(R.drawable.dice1);
             2 -> binding.ivDice.setImageResource(R.drawable.dice2);
@@ -56,8 +57,8 @@ class HigherLowerActivity : AppCompatActivity() {
     }
 
     /**
-     * Replaces the previous dice value with the current one and replaces the current dice with a new dice
-     * with a random number between 1 and 6 (inclusive).
+     * Replaces the previous dice value with the current one and replaces the current dice with
+     * a new dice with a random number between 1 and 6 (inclusive).
      */
     private fun rollDice() {
         lastThrow = currentThrow
@@ -66,7 +67,7 @@ class HigherLowerActivity : AppCompatActivity() {
     }
 
     /**
-     * Calls [rollDice] and checks if the answer is lower than the previous dice roll.
+     * Calls [rollDice] and checks if the new dice value is lower than the previous dice roll.
      */
     private fun onLowerClick() {
         rollDice()
@@ -79,17 +80,29 @@ class HigherLowerActivity : AppCompatActivity() {
     }
 
     /**
-     * Calls [rollDice] and checks if the answer is correct.
+     * Calls [rollDice] and checks if the new dice value is higher than the previous dice roll.
      */
     private fun onEqualClick() {
-        //@TODO Implement this function yourself!
+        rollDice()
+
+        if (currentThrow == lastThrow) {
+            onAnswerCorrect()
+        } else {
+            onAnswerIncorrect()
+        }
     }
 
     /**
-     * Calls [rollDice] and checks if the answer is correct.
+     * Calls [rollDice] and checks if the new dice value is equal to the previous dice roll.
      */
     private fun onHigherClick() {
-        //@TODO Implement this function yourself!
+        rollDice()
+
+        if (currentThrow > lastThrow) {
+            onAnswerCorrect()
+        } else {
+            onAnswerIncorrect()
+        }
     }
 
     /**
