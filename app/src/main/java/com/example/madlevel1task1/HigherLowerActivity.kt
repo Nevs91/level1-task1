@@ -46,12 +46,12 @@ class HigherLowerActivity : AppCompatActivity() {
 
         // Display the correct dice image based on the currentThrow
         when (currentThrow) {
-            1 -> binding.ivDice.setImageResource(R.drawable.dice1);
-            2 -> binding.ivDice.setImageResource(R.drawable.dice2);
-            3 -> binding.ivDice.setImageResource(R.drawable.dice3);
-            4 -> binding.ivDice.setImageResource(R.drawable.dice4);
-            5 -> binding.ivDice.setImageResource(R.drawable.dice5);
-            6 -> binding.ivDice.setImageResource(R.drawable.dice6);
+            1 -> binding.ivDice.setImageResource(R.drawable.dice1)
+            2 -> binding.ivDice.setImageResource(R.drawable.dice2)
+            3 -> binding.ivDice.setImageResource(R.drawable.dice3)
+            4 -> binding.ivDice.setImageResource(R.drawable.dice4)
+            5 -> binding.ivDice.setImageResource(R.drawable.dice5)
+            6 -> binding.ivDice.setImageResource(R.drawable.dice6)
         }
     }
 
